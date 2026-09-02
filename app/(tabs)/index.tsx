@@ -74,6 +74,9 @@ export default function HomeScreen() {
           <ThemedText type="defaultSemiBold">app-example</ThemedText>.
         </ThemedText>
       </ThemedView>
+      <ThemedView style={styles.stepContainer}>
+        <ThemedText type="subtitle">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates consequuntur fugit repellendus accusantium quis, aliquid eveniet molestias dicta illum doloremque exercitationem a nihil rerum eum nesciunt laboriosam, quo, ipsa culpa. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</ThemedText>
+      </ThemedView>
     </ParallaxScrollView>
   );
 }

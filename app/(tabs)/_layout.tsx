@@ -5,6 +5,8 @@ import { HapticTab } from '@/components/haptic-tab';
 import { IconSymbol } from '@/components/ui/icon-symbol';
 import { Colors } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
+import Foundation from '@expo/vector-icons/Foundation';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -28,6 +30,20 @@ export default function TabLayout() {
         options={{
           title: 'Explore',
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="page"
+        options={{
+          title: 'Page',
+          tabBarIcon: ({ color }) => <Foundation name="page-csv" size={28} color="white" />,
+        }}
+      />
+      <Tabs.Screen
+        name="formulas"
+        options={{
+          title: 'Formulas',
+          tabBarIcon: ({ color }) => <MaterialCommunityIcons name="math-integral" size={28} color="white" />,
         }}
       />
     </Tabs>
