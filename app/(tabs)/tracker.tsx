@@ -41,6 +41,22 @@ const MOODS: Mood[] = [
 
 const moodById = (id: MoodId): Mood => MOODS.find((m) => m.id === id) as Mood;
 
+const confirmAction = (
+  title: string,
+  message: string,
+  confirmText: string,
+  onConfirm: () => void
+): void => {
+  if (Platform.OS === 'web') {
+    if (window.confirm(`${title}\n\n${message}`)) onConfirm();
+    return;
+  }
+  Alert.alert(title, message, [
+    { text: 'Скасувати', style: 'cancel' },
+    { text: confirmText, style: 'destructive', onPress: onConfirm },
+  ]);
+};
+
 const pad = (n: number): string => String(n).padStart(2, '0');
 
 const formatDate = (iso: string): { day: string; time: string } => {
@@ -75,25 +91,19 @@ export default function Tracker(): React.JSX.Element {
   };
 
   const confirmDelete = (entry: Entry): void => {
-    Alert.alert('Видалити запис?', 'Цю дію неможливо скасувати.', [
-      { text: 'Скасувати', style: 'cancel' },
-      {
-        text: 'Видалити',
-        style: 'destructive',
-        onPress: () => setEntries((prev) => prev.filter((e) => e.id !== entry.id)),
-      },
-    ]);
+    confirmAction('Видалити запис?', 'Цю дію неможливо скасувати.', 'Видалити', () =>
+      setEntries((prev) => prev.filter((e) => e.id !== entry.id))
+    );
   };
 
   const confirmClearAll = (): void => {
-    if (entries.length === 0) {
-      Alert.alert('Історія порожня', 'Немає що очищати.');
-      return;
-    }
-    Alert.alert('Очистити всю історію?', 'Усі записи буде видалено безповоротно.', [
-      { text: 'Скасувати', style: 'cancel' },
-      { text: 'Очистити', style: 'destructive', onPress: () => setEntries([]) },
-    ]);
+    if (entries.length === 0) return;
+    confirmAction(
+      'Очистити всю історію?',
+      'Усі записи буде видалено безповоротно.',
+      'Очистити',
+      () => setEntries([])
+    );
   };
 
   const topMood = useMemo<TopMood | null>(() => {
