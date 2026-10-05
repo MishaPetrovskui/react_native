@@ -46,6 +46,13 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => <MaterialCommunityIcons name="math-integral" size={28} color="white" />,
         }}
       />
+      <Tabs.Screen
+        name="Shop"
+        options={{
+          title: 'Shop',
+          tabBarIcon: ({ color }) => <MaterialCommunityIcons name="cart-outline" size={28} color={color} />,
+        }}
+      />
     </Tabs>
   );
 }
