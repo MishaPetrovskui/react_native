@@ -53,6 +53,13 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => <MaterialCommunityIcons name="cart-outline" size={28} color={color} />,
         }}
       />
+      <Tabs.Screen
+        name="todoHub"
+        options={{
+          title: 'To-do',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="checklist" color={color} />,
+        }}
+      />
     </Tabs>
   );
 }

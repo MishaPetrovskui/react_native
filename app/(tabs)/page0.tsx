@@ -18,7 +18,7 @@ export default function Page1() {
   const [shoppingItems, setShoppingItems] = useState<{ id: string; text: string }[]>([]);
   const [newItemText, setNewItemText] = useState('');
 
-  const [targetNumber, setTargetNumber] = useState(() => Math.floor(Math.random() * 100) + 1);
+  const [targetNumber] = useState(() => Math.floor(Math.random() * 100) + 1);
   const [guessInput, setGuessInput] = useState('');
   const [guessHistory, setGuessHistory] = useState<{ id: string; text: string }[]>([]);
   const [guessError, setGuessError] = useState('');
@@ -91,7 +91,7 @@ export default function Page1() {
       </ThemedView>
 
       <ThemedView style={styles.text}>
-        <ThemedText>where <ThemedText style={styles.textColorfull}>a</ThemedText> and <ThemedText style={styles.textColorfull}>b</ThemedText> are real numbers and <ThemedText style={styles.textColorfull}>x</ThemedText> is a variable. This form is sometimes called the standard form of a linear equation. Note that most linear equations will not start off in this form. Also, the variable may or may not be an <ThemedText style={styles.textColorfull}>x</ThemedText> so don't get too locked into always seeing an <ThemedText style={styles.textColorfull}>x</ThemedText> there.</ThemedText>
+        <ThemedText>where <ThemedText style={styles.textColorfull}>a</ThemedText> and <ThemedText style={styles.textColorfull}>b</ThemedText> are real numbers and <ThemedText style={styles.textColorfull}>x</ThemedText> is a variable. This form is sometimes called the standard form of a linear equation. Note that most linear equations will not start off in this form. Also, the variable may or may not be an <ThemedText style={styles.textColorfull}>x</ThemedText> so don&apos;t get too locked into always seeing an <ThemedText style={styles.textColorfull}>x</ThemedText> there.</ThemedText>
       </ThemedView>
       <Pressable onPress={() => {Alert.alert('Next page')}} style={[styles.button, styles.text]}>
         <ThemedText style={[styles.smallTitle, styles.text]}>Next</ThemedText>
@@ -109,10 +109,10 @@ export default function Page1() {
         <FlatList 
           data = {products}
           renderItem={ ({item}) => (
-          <Pressable onPress={() => {() => Alert.alert("Notification", "Are you sure delete this product?",[
+          <Pressable onPress={() => Alert.alert("Notification", "Are you sure delete this product?",[
                 {text: "Yes", onPress: () => { setProducts(prev => prev.filter(todo => todo.id !== item.id)) }},
                 {text: "No", onPress: () => {}},
-              ])}} style={styles.button}>
+              ])} style={styles.button}>
             <ThemedText>{item.text}</ThemedText>
           </Pressable>
         )}
